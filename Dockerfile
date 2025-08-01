@@ -30,6 +30,7 @@ COPY . .
 
 # Run database migration and seeding (for production use, move to entrypoint)
 RUN flask db upgrade
+RUN flask seed undo
 RUN flask seed all
 
 # Start the application using Gunicorn
