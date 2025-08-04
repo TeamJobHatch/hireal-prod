@@ -8,6 +8,10 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.auth_google_routes import google_auth_routes
+from .api.resume_routes import resume_routes
+from .api.job_position_routes import job_position_routes
+from .api.ai_job_resume_score_routes import job_resume_score_routes
+from .api.ai_resume_analysis_routes import ai_resume_analysis_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,6 +34,10 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(google_auth_routes, url_prefix='/api/auth')
+app.register_blueprint(resume_routes, url_prefix='/api/resumes')
+app.register_blueprint(job_position_routes, url_prefix='/api/jobs')
+app.register_blueprint(ai_resume_analysis_routes, url_prefix='/api/ai')
+app.register_blueprint(job_resume_score_routes, url_prefix='/api/ai')
 db.init_app(app)
 Migrate(app, db)
 

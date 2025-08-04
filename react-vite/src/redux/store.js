@@ -6,9 +6,17 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import jobPositionsReducer from './jobPositions';
+import resumesReducer from './resumes';
+import aiResumeAnalysisReducer from "./aiResumeAnalysis";
+import jobResumeScoreReducer from './aiJobResumeScore';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  jobs: jobPositionsReducer,
+  resumes: resumesReducer,
+  aiResumeAnalysis: aiResumeAnalysisReducer,
+  jobResumeScore: jobResumeScoreReducer,
 });
 
 let enhancer;

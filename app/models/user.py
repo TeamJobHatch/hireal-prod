@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.sql import func
 
 
 class User(db.Model, UserMixin):
@@ -13,6 +14,15 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40),unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    # Relationships
+    subscriptions = db.relationship("UserSubscription", back_populates="user", cascade="all, delete-orphan")
+    payment_records = db.relationship("PaymentRecord", back_populates="user", cascade="all, delete-orphan")
+    job_positions = db.relationship("JobPosition", back_populates="user", cascade="all, delete-orphan")
+    resumes = db.relationship("Resume", back_populates="user", cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -29,5 +39,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            "email": self.email,
+            "created_at": self.created_at,
+            "updated_at": self.updated_at
         }
