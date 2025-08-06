@@ -14,6 +14,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40),unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    is_admin = db.Column(db.Boolean, default=False, nullable=False)
 
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
@@ -41,5 +42,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             "email": self.email,
             "created_at": self.created_at,
-            "updated_at": self.updated_at
+            "updated_at": self.updated_at,
+            "is_admin":self.is_admin
         }

@@ -13,6 +13,8 @@ import ResumeJobMatch from '../components/ResumeJobMatch/ResumeJobMatch'
 import SelectResumeToMatch from "../components/ResumeJobMatch/SelectResumeToMatch";
 import BatchSelectResumesToMatch from '../components/ResumeJobMatch/BatchSelectResumesToMatch'
 import BatchResumeJobMatch from '../components/ResumeJobMatch/BatchResumeJobMatch'
+import PlanListPage from '../components/ManageSubPlan/PlanListPage';
+import PlanDetailPage from '../components/ManageSubPlan/PlanDetailPage';
 
 
 import Layout from './Layout';
@@ -80,7 +82,16 @@ export const router = createBrowserRouter([
       {
         path: "/jobs/:jobId/resumes/match_batch_results",
         element: <BatchResumeJobMatch />,
-      }
+      },
+      {
+        path: "plans",
+        element: <PlanListPage />,
+      },
+      {
+        path: "plans/:planId",
+        element: <PlanDetailPage />,
+      },
+
     ],
   },
 ]);

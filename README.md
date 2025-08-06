@@ -6,7 +6,7 @@ This is the starter for the Flask React project.
 
 1. Clone this repository (only this branch).
 
-2. Install dependencies.
+2. Install dependencies.(pip freeze > requirements.txt)
 
    ```bash
    pipenv install -r requirements.txt

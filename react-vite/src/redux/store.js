@@ -10,6 +10,7 @@ import jobPositionsReducer from './jobPositions';
 import resumesReducer from './resumes';
 import aiResumeAnalysisReducer from "./aiResumeAnalysis";
 import jobResumeScoreReducer from './aiJobResumeScore';
+import plansReducer from './subPlans';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   resumes: resumesReducer,
   aiResumeAnalysis: aiResumeAnalysisReducer,
   jobResumeScore: jobResumeScoreReducer,
+  plans: plansReducer,
 });
 
 let enhancer;

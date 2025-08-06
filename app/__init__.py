@@ -12,6 +12,9 @@ from .api.resume_routes import resume_routes
 from .api.job_position_routes import job_position_routes
 from .api.ai_job_resume_score_routes import job_resume_score_routes
 from .api.ai_resume_analysis_routes import ai_resume_analysis_routes
+from .api.sub_plan_routes import plans_bp
+from .api.user_sub_routes import subscriptions_bp
+from .api.user_payments_record_routes import stripe_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -38,6 +41,9 @@ app.register_blueprint(resume_routes, url_prefix='/api/resumes')
 app.register_blueprint(job_position_routes, url_prefix='/api/jobs')
 app.register_blueprint(ai_resume_analysis_routes, url_prefix='/api/ai')
 app.register_blueprint(job_resume_score_routes, url_prefix='/api/ai')
+app.register_blueprint(plans_bp, url_prefix='/api/plans')
+app.register_blueprint(subscriptions_bp, url_prefix='/api/subscriptions')
+app.register_blueprint(stripe_routes, url_prefix='/api/payments')
 db.init_app(app)
 Migrate(app, db)
 
