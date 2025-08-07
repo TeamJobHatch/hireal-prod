@@ -18,37 +18,56 @@ const NewJobPosition = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h2 className="text-xl font-bold mb-4">Create New Job Position</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block mb-1 font-medium">Title</label>
-          <input
-            type="text"
-            className="w-full border rounded px-3 py-2"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-          />
-          {errors.title && <p className="text-red-500 text-sm">{errors.title}</p>}
-        </div>
+    <div className="min-h-screen py-8" style={{ backgroundColor: '#fff7e8' }}>
+      <div className="max-w-2xl mx-auto px-6">
+        <div className="bg-white rounded-2xl shadow-lg p-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">Create New Job Position</h1>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Job Title</label>
+              <input
+                type="text"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter job title"
+                required
+              />
+              {errors.title && <p className="text-red-600 text-xs mt-1">{errors.title}</p>}
+            </div>
 
-        <div>
-          <label className="block mb-1 font-medium">Description</label>
-          <textarea
-            className="w-full border rounded px-3 py-2 h-32"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-        </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Job Description</label>
+              <textarea
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent h-40"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Enter detailed job description, requirements, and qualifications..."
+              ></textarea>
+              {errors.description && <p className="text-red-600 text-xs mt-1">{errors.description}</p>}
+            </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Submit
-        </button>
-      </form>
+            <div className="flex gap-4">
+              <button
+                type="button"
+                onClick={() => navigate('/joblist')}
+                className="flex-1 px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="flex-1 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+                style={{ backgroundColor: '#EA580C' }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#DC2626'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = '#EA580C'}
+              >
+                Create Job Position
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

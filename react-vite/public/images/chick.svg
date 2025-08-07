@@ -1,0 +1,22 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body -->
+  <ellipse cx="60" cy="65" rx="45" ry="40" fill="#FFBC57"/>
+  
+  <!-- Wings -->
+  <ellipse cx="25" cy="70" rx="15" ry="20" transform="rotate(-20 25 70)" fill="#FFD57F"/>
+  <ellipse cx="95" cy="70" rx="15" ry="20" transform="rotate(20 95 70)" fill="#FFD57F"/>
+  
+  <!-- Face -->
+  <circle cx="50" cy="50" r="6" fill="#333333"/>
+  <circle cx="70" cy="50" r="6" fill="#333333"/>
+  
+  <!-- Beak -->
+  <path d="M55 60 L65 60 L60 70 Z" fill="#FF7E00"/>
+  
+  <!-- Feet -->
+  <path d="M45 100 L50 90 L55 100 L45 100" fill="#FF7E00"/>
+  <path d="M65 100 L70 90 L75 100 L65 100" fill="#FF7E00"/>
+  
+  <!-- Fluff on top -->
+  <path d="M45 30 Q60 10 75 30" stroke="#FFBC57" stroke-width="8" fill="none"/>
+</svg> 

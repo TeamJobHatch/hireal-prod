@@ -27,56 +27,71 @@ const ManageResumes = () => {
   };
 
   return (
-    <div className="p-6 max-w-3xl mx-auto">
-      <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-semibold">Your Resumes</h2>
-        <Link to="/resumes/new">
-          <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-            + New Resume
-          </button>
-        </Link>
-      </div>
+    <div className="min-h-screen py-8" style={{ backgroundColor: '#fff7e8' }}>
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Your Resumes</h1>
+          <Link to="/resumes/new">
+            <button 
+              className="text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200"
+              style={{ backgroundColor: '#EA580C' }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#DC2626'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = '#EA580C'}
+            >
+              + New Resume
+            </button>
+          </Link>
+        </div>
 
-      {resumes.length === 0 ? (
-        <p className="text-gray-500">No resumes uploaded yet.</p>
-      ) : (
-        <ul className="divide-y divide-gray-200 bg-white rounded shadow">
-          {resumes.map(resume => (
-            <li key={resume.id} className="flex justify-between items-center px-4 py-3">
-              <div>
-                <a
-                  href={resume.file_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-blue-600 hover:underline"
-                >
-                  {resume.file_name}
-                </a>
-                <p className="text-sm text-gray-500">
-                  {new Date(resume.uploaded_at).toLocaleString()}
-                </p>
+        {resumes.length === 0 ? (
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center">
+            <p className="text-gray-500 text-lg">No resumes uploaded yet.</p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            {resumes.map(resume => (
+              <div key={resume.id} className="bg-white rounded-2xl shadow-lg p-6 flex justify-between items-center">
+                <div className="flex-1">
+                  <a
+                    href={resume.file_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl font-semibold hover:underline"
+                    style={{ color: '#EA580C' }}
+                  >
+                    {resume.file_name}
+                  </a>
+                  <p className="text-sm text-gray-500 mt-1">
+                    Uploaded: {new Date(resume.uploaded_at).toLocaleDateString()}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3 ml-6">
+                  <Link to={`/resumes/${resume.id}/edit`}>
+                    <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                      Edit
+                    </button>
+                  </Link>
+                  <button
+                    onClick={() => handleAiScore(resume.id)}
+                    className="px-4 py-2 text-white rounded-lg transition-colors"
+                    style={{ backgroundColor: '#8B5CF6' }}
+                    onMouseEnter={(e) => e.target.style.backgroundColor = '#7C3AED'}
+                    onMouseLeave={(e) => e.target.style.backgroundColor = '#8B5CF6'}
+                  >
+                    AI Score
+                  </button>
+                  <button
+                    onClick={() => handleDelete(resume.id)}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <Link to={`/resumes/${resume.id}/edit`}>
-                  <button className="text-blue-600 hover:underline">Edit</button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(resume.id)}
-                  className="text-red-600 hover:underline"
-                >
-                  Delete
-                </button>
-                <button
-                  onClick={() => handleAiScore(resume.id)}
-                  className="text-purple-600 hover:underline"
-                >
-                  AI Score
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

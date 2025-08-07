@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { FaUserCircle } from 'react-icons/fa';
 import { thunkLogout } from "../../redux/session";
+import './ProfileButton.css';
 
 function ProfileButton() {
   const dispatch = useDispatch();
@@ -36,59 +36,54 @@ function ProfileButton() {
     navigate('/');
   };
 
+  // If user is not logged in, show Login/Sign Up buttons
+  if (!user) {
+    return (
+      <div className="auth-buttons">
+        <button 
+          onClick={() => navigate('/login')}
+          className="login-button"
+        >
+          Login
+        </button>
+        <button 
+          onClick={() => navigate('/signup')}
+          className="signup-button"
+        >
+          Sign Up
+        </button>
+      </div>
+    );
+  }
+
+  // If user is logged in, show profile dropdown
   return (
-    <div className="relative inline-block text-left">
-      <button
-        onClick={toggleMenu}
-        className="flex items-center text-gray-700 hover:text-blue-600 focus:outline-none"
-      >
-        <FaUserCircle className="text-2xl" />
+    <div className="profile-dropdown">
+      <button onClick={toggleMenu} className="profile-button">
+        <img
+          src="/images/LOGO.jpg"
+          alt="Profile"
+          className="profile-avatar"
+        />
       </button>
 
       {showMenu && (
-        <ul
-          ref={ulRef}
-          className="absolute top-full left-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-[1100]"
-        >
-          {user ? (
-            <>
-              <li className="px-4 py-2 text-sm text-gray-500">{user.email}</li>
-              <li>
-                <button
-                  onClick={logout}
-                  className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
-                >
-                  Log Out
-                </button>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <button
-                  onClick={() => {
-                    navigate('/login');
-                    setShowMenu(false);
-                  }}
-                  className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-gray-100"
-                >
-                  Log In
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => {
-                    navigate('/signup');
-                    setShowMenu(false);
-                  }}
-                  className="w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-gray-100"
-                >
-                  Sign Up
-                </button>
-              </li>
-            </>
-          )}
-        </ul>
+        <div ref={ulRef} className="dropdown-menu">
+          <div className="user-info">
+            <span className="user-email">{user.email}</span>
+          </div>
+          <div className="menu-divider"></div>
+          <button onClick={() => {navigate('/resumes'); setShowMenu(false);}} className="menu-item">
+            Resumes
+          </button>
+          <button onClick={() => {navigate('/joblist'); setShowMenu(false);}} className="menu-item">
+            Job Positions
+          </button>
+          <div className="menu-divider"></div>
+          <button onClick={logout} className="menu-item logout-item">
+            Log Out
+          </button>
+        </div>
       )}
     </div>
   );

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import HomePage from '../components/HomePage/HomePage';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import ShowJobPositions from '../components/ManageJobPosition/ShowJobPositions';
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1 className="text-4xl font-bold text-center mt-20">Welcome!</h1>,
+        element: <HomePage />,
       },
       {
         path: "login",

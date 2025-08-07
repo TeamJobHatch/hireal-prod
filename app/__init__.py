@@ -48,7 +48,7 @@ db.init_app(app)
 Migrate(app, db)
 
 # Application Security
-CORS(app)
+CORS(app,origins="http://localhost:5173")
 
 
 # Since we are deploying with Docker and Flask,
