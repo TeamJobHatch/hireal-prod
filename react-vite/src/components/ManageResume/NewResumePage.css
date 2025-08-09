@@ -249,6 +249,17 @@
   color: #374151;
 }
 
+/* Error Message */
+.error-message {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
 /* Analyzing Section */
 .analyzing-section {
   text-align: center;
@@ -258,6 +269,12 @@
   font-size: 1.125rem;
   color: #6b7280;
   margin-bottom: 2rem;
+}
+
+.upload-info-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-top: 1rem;
 }
 
 .progress-container {

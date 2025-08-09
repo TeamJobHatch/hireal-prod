@@ -11,21 +11,51 @@ const NewResumePage = () => {
   const [step, setStep] = useState(1); // 1: upload, 2: job post, 3: analyzing
   const [jobPost, setJobPost] = useState('');
 
-  const handleNext = () => {
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadError, setUploadError] = useState(null);
+
+  const handleNext = async () => {
     if (step === 1 && files.length > 0) {
       setStep(2);
     } else if (step === 2) {
       setStep(3);
-      // Simulate analyzing delay then navigate to results
-      setTimeout(() => {
-        navigate("/resumes/1/ai-score"); // Navigate to analysis results
-      }, 3000);
+      setIsUploading(true);
+      setUploadError(null);
+      
+      try {
+        // Create FormData to send files
+        const formData = new FormData();
+        files.forEach((file) => {
+          formData.append('file', file);  // Backend expects 'file' not 'files'
+        });
+
+        // Upload resumes using the existing thunk
+        const result = await dispatch(thunkUploadResumes(formData));
+        
+        if (!result) {
+          // Upload successful (thunk returns null on success)
+          // Since we don't get the resume ID back directly, navigate to resumes list
+          setTimeout(() => {
+            navigate("/resumes");
+          }, 2000);
+        } else {
+          // Upload failed (thunk returns error data)
+          setUploadError(result?.error || 'Upload failed. Please try again.');
+          setStep(2); // Go back to step 2 on error
+        }
+      } catch (error) {
+        console.error('Upload error:', error);
+        setUploadError('Upload failed. Please try again.');
+        setStep(2); // Go back to step 2 on error
+      } finally {
+        setIsUploading(false);
+      }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    handleNext();
+    await handleNext();
   };
 
   // Remove a file from the list by its index
@@ -153,6 +183,11 @@ const NewResumePage = () => {
 
             {/* Job Post Card */}
             <div className="upload-card">
+              {uploadError && (
+                <div className="error-message">
+                  {uploadError}
+                </div>
+              )}
               <form onSubmit={handleSubmit}>
                 <div className="job-post-section">
                   <textarea
@@ -204,13 +239,22 @@ const NewResumePage = () => {
       <div className="upload-container">
         <div className="upload-content">
           <div className="analyzing-section">
-            <h1 className="upload-title">We are analyzing...</h1>
-            <p className="analyzing-subtitle">Please give us a moment...</p>
+            <h1 className="upload-title">
+              {isUploading ? "Uploading resumes..." : "We are analyzing..."}
+            </h1>
+            <p className="analyzing-subtitle">
+              {isUploading ? "Please wait while we upload your files..." : "Please give us a moment..."}
+            </p>
             
             {/* Progress bar */}
             <div className="progress-container">
               <div className="progress-bar"></div>
             </div>
+            
+            {/* File count info */}
+            <p className="upload-info-text">
+              {files.length} file{files.length !== 1 ? 's' : ''} selected
+            </p>
           </div>
         </div>
       </div>

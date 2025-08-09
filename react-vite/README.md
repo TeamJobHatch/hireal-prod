@@ -16,3 +16,9 @@ Don't forget to run `npm run build` before merging your work to your production
 branch!
 
 [`localhost:5173`]: http://localhost:5173/
+
+
+
+.\venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+flask run
