@@ -3,9 +3,9 @@ from flask_login import login_required, current_user
 from app.models import db, Resume, JobPosition, ResumeJobScore
 from .ai_resume_utils import extract_resume_text, call_ai_resume_job_match
 
-job_resume_score_routes = Blueprint('job_resume_score', __name__)
+ai_job_resume_score_routes = Blueprint('job_resume_score', __name__)
 
-@job_resume_score_routes.route('/jobs/<int:job_id>/resumes/<int:resume_id>/match', methods=['POST'])
+@ai_job_resume_score_routes.route('/jobs/<int:job_id>/resumes/<int:resume_id>/match', methods=['POST'])
 @login_required
 def match_resume_to_job(job_id, resume_id):
     resume = Resume.query.get(resume_id)
@@ -75,7 +75,7 @@ def match_resume_to_job(job_id, resume_id):
     }), 200
 
 
-@job_resume_score_routes.route('/jobs/<int:job_id>/resumes/match_batch', methods=['POST'])
+@ai_job_resume_score_routes.route('/jobs/<int:job_id>/resumes/match_batch', methods=['POST'])
 @login_required
 def batch_match_resumes_to_job(job_id):
     job = JobPosition.query.get(job_id)

@@ -55,6 +55,17 @@ function ProfileButton() {
               <li className="px-4 py-2 text-sm text-gray-500">{user.email}</li>
               <li>
                 <button
+                  onClick={() => {
+                    navigate('/userhome');
+                    setShowMenu(false);
+                  }}
+                  className="w-full text-left px-4 py-2 text-sm text-blue-600 hover:bg-gray-100"
+                >
+                  User Home
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={logout}
                   className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100"
                 >

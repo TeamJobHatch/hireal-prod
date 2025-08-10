@@ -30,7 +30,7 @@ function SignupFormPage() {
     if (res) {
       setErrors(res);
     } else {
-      navigate("/congratulations");
+      navigate("/userhome");
     }
   };
 

@@ -1,41 +1,60 @@
-// 没有实际使用 也没有注册
+// Action types
+const SET_STRIPE_PUBLIC_KEY = 'payments/setStripePublicKey';
+const SET_CHECKOUT_URL = 'payments/setCheckoutUrl';
+const CLEAR_CHECKOUT_URL = 'payments/clearCheckoutUrl';
 
+// Actions
+const setStripePublicKey = (key) => ({
+  type: SET_STRIPE_PUBLIC_KEY,
+  payload: key,
+});
 
-
-// action types
-const CREATE_CHECKOUT_SESSION_REQUEST = 'payment/createCheckoutSessionRequest';
-const CREATE_CHECKOUT_SESSION_SUCCESS = 'payment/createCheckoutSessionSuccess';
-const CREATE_CHECKOUT_SESSION_FAILURE = 'payment/createCheckoutSessionFailure';
-
-// action creators
-const createCheckoutSessionRequest = () => ({ type: CREATE_CHECKOUT_SESSION_REQUEST });
-const createCheckoutSessionSuccess = (url) => ({
-  type: CREATE_CHECKOUT_SESSION_SUCCESS,
+const setCheckoutUrl = (url) => ({
+  type: SET_CHECKOUT_URL,
   payload: url,
 });
-const createCheckoutSessionFailure = (error) => ({
-  type: CREATE_CHECKOUT_SESSION_FAILURE,
-  payload: error,
+
+export const clearCheckoutUrl = () => ({
+  type: CLEAR_CHECKOUT_URL,
 });
 
-// thunk for creating checkout session
-export const thunkCreateCheckoutSession = (planId) => async (dispatch) => {
-  dispatch(createCheckoutSessionRequest());
-  try {
-    const res = await fetch(`/api/stripe/create-checkout-session/${planId}`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.error || 'Failed to create checkout session');
-    }
+// Thunks
+export const thunkFetchStripeConfig = (planId) => async (dispatch) => {
+  const res = await fetch(`/api/payments/config?plan_id=${planId}`);
+  if (res.ok) {
     const data = await res.json();
-    dispatch(createCheckoutSessionSuccess(data.url));
-    // Redirect to Stripe checkout page
-    window.location.href = data.url;
-  } catch (error) {
-    dispatch(createCheckoutSessionFailure(error.message));
+    dispatch(setStripePublicKey(data.publicKey));
+    return data.plan;
   }
 };
+
+export const thunkCreateCheckoutSession = (planId) => async (dispatch) => {
+  const res = await fetch(`/api/payments/create-checkout-session/${planId}`, {
+    method: 'POST',
+  });
+  if (res.ok) {
+    const data = await res.json();
+    dispatch(setCheckoutUrl(data.url));
+    return data.url;
+  }
+  // handle error as needed
+};
+
+// Reducer
+const initialState = {
+  publicKey: null,
+  checkoutUrl: null,
+};
+
+export default function paymentsReducer(state = initialState, action) {
+  switch (action.type) {
+    case SET_STRIPE_PUBLIC_KEY:
+      return { ...state, publicKey: action.payload };
+    case SET_CHECKOUT_URL:
+      return { ...state, checkoutUrl: action.payload };
+    case CLEAR_CHECKOUT_URL:
+      return { ...state, checkoutUrl: null };
+    default:
+      return state;
+  }
+}

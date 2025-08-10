@@ -1,8 +1,7 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import db, Resume, ResumeAnalysis
-import json
-from .ai_resume_utils import extract_resume_text, call_ai_resume_analysis  
+from .ai_resume_utils import extract_resume_text, call_ai_resume_analysis
 
 ai_resume_analysis_routes = Blueprint('ai_resume_analysis', __name__)
 
@@ -13,11 +12,21 @@ def analyze_resume(resume_id):
     if not resume or resume.user_id != current_user.id:
         return jsonify({"error": "Resume not found or unauthorized"}), 404
 
+    # Check if there is existing analysis in the database
+    existing_analysis = ResumeAnalysis.query.filter_by(
+        resume_id=resume_id,
+        ai_model="gpt-4"
+    ).order_by(ResumeAnalysis.evaluated_at.desc()).first()
 
+    if existing_analysis:
+        # Return existing analysis without calling AI again
+        return jsonify({"analysis": existing_analysis.to_dict()}), 200
+
+    # If no existing analysis, extract resume text and call AI
     try:
         text = extract_resume_text(resume.file_url)
     except Exception as e:
-        return jsonify({"error": str(e)}), 400
+        return jsonify({"error": f"Failed to extract resume text: {str(e)}"}), 400
 
     if not text.strip():
         return jsonify({"error": "No text extracted from resume"}), 400
@@ -27,6 +36,7 @@ def analyze_resume(resume_id):
     except Exception as e:
         return jsonify({"error": f"AI analysis failed: {str(e)}"}), 500
 
+    # Save new analysis to the database
     new_analysis = ResumeAnalysis(
         resume_id=resume.id,
         ai_model="gpt-4",
@@ -45,4 +55,5 @@ def analyze_resume(resume_id):
     db.session.add(new_analysis)
     db.session.commit()
 
-    return jsonify({"analysis": analysis_data, "analysis_id": new_analysis.id}), 200
+    return jsonify({"analysis": new_analysis.to_dict()}), 200
+

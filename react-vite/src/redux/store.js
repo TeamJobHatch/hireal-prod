@@ -11,6 +11,8 @@ import resumesReducer from './resumes';
 import aiResumeAnalysisReducer from "./aiResumeAnalysis";
 import jobResumeScoreReducer from './aiJobResumeScore';
 import plansReducer from './subPlans';
+import paymentsReducer from './payment';
+import userSubscriptionsReducer from "./userSub";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -19,6 +21,8 @@ const rootReducer = combineReducers({
   aiResumeAnalysis: aiResumeAnalysisReducer,
   jobResumeScore: jobResumeScoreReducer,
   plans: plansReducer,
+  payments: paymentsReducer, 
+  userSubscription: userSubscriptionsReducer,
 });
 
 let enhancer;

@@ -15,6 +15,8 @@ import BatchSelectResumesToMatch from '../components/ResumeJobMatch/BatchSelectR
 import BatchResumeJobMatch from '../components/ResumeJobMatch/BatchResumeJobMatch'
 import PlanListPage from '../components/ManageSubPlan/PlanListPage';
 import PlanDetailPage from '../components/ManageSubPlan/PlanDetailPage';
+import UserHome from '../components/UserHome/UserHome';
+import PaymentSuccess from '../components/ManageSubPlan/PaymentSuccess'
 
 
 import Layout from './Layout';
@@ -60,27 +62,27 @@ export const router = createBrowserRouter([
         element: <NewResumePage />,
       },
       {
-        path: "/resumes/:resumeId/edit",
+        path: "resumes/:resumeId/edit",
         element: <EditResumePage />,
       },
       {
-        path: "/resumes/:resumeId/ai-score",
+        path: "resumes/:resumeId/ai-score",
         element: <ResumeAIAnalysis />,
       },
       {
-        path: "/jobs/:jobId/resumes/:resumeId/match",
+        path: "jobs/:jobId/resumes/:resumeId/match",
         element: <ResumeJobMatch />,
       },
       {
-        path: "/jobs/:jobId/resumes/select",
+        path: "jobs/:jobId/resumes/select",
         element: <SelectResumeToMatch />,
       },
       {
-        path: "/jobs/:jobId/select_resumes_batch",
+        path: "jobs/:jobId/select_resumes_batch",
         element: <BatchSelectResumesToMatch />,
       },
       {
-        path: "/jobs/:jobId/resumes/match_batch_results",
+        path: "jobs/:jobId/resumes/match_batch_results",
         element: <BatchResumeJobMatch />,
       },
       {
@@ -91,6 +93,16 @@ export const router = createBrowserRouter([
         path: "plans/:planId",
         element: <PlanDetailPage />,
       },
+      {
+        path: "userhome",
+        element: <UserHome />,
+      },
+      {
+        path: "payment/success",
+        element: <PaymentSuccess />,
+      },
+
+
 
     ],
   },

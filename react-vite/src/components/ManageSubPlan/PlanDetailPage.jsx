@@ -1,50 +1,44 @@
-//组件内有redux代码 需要修改
-
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { thunkFetchPlans } from '../../redux/subPlans';
+import { thunkCreateCheckoutSession, clearCheckoutUrl } from '../../redux/payment';
 
 const PlanDetailPage = () => {
   const { planId } = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const plans = useSelector((state) => state.plans);
   const plan = plans[planId];
 
+  const checkoutUrl = useSelector((state) => state.payments.checkoutUrl);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Fetch plans if not already loaded (in case user navigated directly)
+  // Load plans if not available
   useEffect(() => {
     if (!plan) {
       dispatch(thunkFetchPlans());
     }
   }, [dispatch, plan]);
 
-  // Trigger Stripe checkout session creation
+  // When checkoutUrl changes (means backend返回了支付页面URL)，跳转过去
+  useEffect(() => {
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+      dispatch(clearCheckoutUrl()); // 清理状态，防止重复跳转
+    }
+  }, [checkoutUrl, dispatch]);
+
+  // 触发 redux thunk 创建 checkout session
   const handleSubscribe = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const res = await fetch(`/api/payments/create-checkout-session/${planId}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || 'Failed to create checkout session');
-      }
-
-      const data = await res.json();
-
-      // Redirect to Stripe Checkout
-      window.location.href = data.url;
+      const url = await dispatch(thunkCreateCheckoutSession(planId));
+      if (!url) throw new Error('Failed to get checkout url');
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -88,3 +82,4 @@ const PlanDetailPage = () => {
 };
 
 export default PlanDetailPage;
+

@@ -9,6 +9,7 @@ class UserSubscription(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False, unique=True)
     plan_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("subscription_plans.id")), nullable=False)
+    stripe_subscription_id = db.Column(db.String(255), unique=True, nullable=True)
     start_date = db.Column(db.DateTime(timezone=True), server_default=func.now())
     end_date = db.Column(db.DateTime(timezone=True))
     trial_end_date = db.Column(db.DateTime(timezone=True))
@@ -26,6 +27,7 @@ class UserSubscription(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "plan_id": self.plan_id,
+            "stripe_subscription_id": self.stripe_subscription_id,
             "start_date": self.start_date,
             "end_date": self.end_date,
             "trial_end_date": self.trial_end_date,
