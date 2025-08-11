@@ -5,6 +5,7 @@ import {
   thunkUpdateResume,
   thunkFetchResumes
 } from "../../redux/resumes";
+import "./EditResumePage.css";
 
 const EditResumePage = () => {
   const { resumeId } = useParams();
@@ -34,26 +35,46 @@ const EditResumePage = () => {
     }
   };
 
-  if (!resume) return <p className="p-6">Loading...</p>;
+  if (!resume)
+    return (
+      <div className="edit-page">
+        <div className="loading-container">
+          <p className="loading-text">Loading...</p>
+        </div>
+      </div>
+    );
 
   return (
-    <div className="p-6 max-w-xl mx-auto">
-      <h2 className="text-xl font-semibold mb-4">Edit Resume Name</h2>
-      <form onSubmit={handleSubmit}>
-        <label className="block mb-2">Resume Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="border px-3 py-2 w-full mb-4"
-        />
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Save
-        </button>
-      </form>
+    <div className="edit-page">
+      <div className="edit-container">
+        <div className="edit-content">
+          <div className="edit-card">
+            <div className="edit-header">
+              <h2 className="edit-title">Edit Resume Name</h2>
+            </div>
+
+            <form onSubmit={handleSubmit} className="edit-form">
+              <div className="form-group">
+                <label className="form-label">Resume Name</label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="form-input"
+                />
+              </div>
+              <div className="form-actions">
+                <button
+                  type="submit"
+                  className="save-button"
+                >
+                  Save
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
