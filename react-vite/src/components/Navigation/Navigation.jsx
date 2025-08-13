@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 const Navigation = () => {
-  const user = useSelector((state) => state.session.user);
+
 
   return (
     <header className="navigation-header">

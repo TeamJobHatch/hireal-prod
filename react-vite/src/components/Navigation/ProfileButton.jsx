@@ -73,15 +73,27 @@ function ProfileButton() {
             <span className="user-email">{user.email}</span>
           </div>
           <div className="menu-divider"></div>
+          <button onClick={() => {navigate('/userhome'); setShowMenu(false);}} className="menu-item">
+            🏠 Dashboard
+          </button>
           <button onClick={() => {navigate('/resumes'); setShowMenu(false);}} className="menu-item">
-            Resumes
+            📄 Resumes
           </button>
           <button onClick={() => {navigate('/joblist'); setShowMenu(false);}} className="menu-item">
-            Job Positions
+            💼 Job Positions
+          </button>
+          <button onClick={() => {navigate('/match-history'); setShowMenu(false);}} className="menu-item">
+            🎯 Match History
+          </button>
+          <button onClick={() => {navigate('/plans'); setShowMenu(false);}} className="menu-item">
+            💳 Subscription Plans
+          </button>
+          <button onClick={() => {navigate('/my-plans'); setShowMenu(false);}} className="menu-item">
+            ⭐ My Plan
           </button>
           <div className="menu-divider"></div>
           <button onClick={logout} className="menu-item logout-item">
-            Log Out
+            🚪 Log Out
           </button>
         </div>
       )}

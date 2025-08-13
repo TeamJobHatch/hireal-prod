@@ -14,8 +14,12 @@ import ResumeJobMatch from '../components/ResumeJobMatch/ResumeJobMatch'
 import SelectResumeToMatch from "../components/ResumeJobMatch/SelectResumeToMatch";
 import BatchSelectResumesToMatch from '../components/ResumeJobMatch/BatchSelectResumesToMatch'
 import BatchResumeJobMatch from '../components/ResumeJobMatch/BatchResumeJobMatch'
+import MatchHistory from '../components/ResumeJobMatch/matchHistory'
 import PlanListPage from '../components/ManageSubPlan/PlanListPage';
 import PlanDetailPage from '../components/ManageSubPlan/PlanDetailPage';
+import MyPlans from '../components/ManageSubPlan/myPlan';
+import PaymentSuccess from '../components/ManageSubPlan/PaymentSuccess';
+import UserHome from '../components/UserHome/UserHome';
 
 
 import Layout from './Layout';
@@ -91,6 +95,22 @@ export const router = createBrowserRouter([
       {
         path: "plans/:planId",
         element: <PlanDetailPage />,
+      },
+      {
+        path: "my-plans",
+        element: <MyPlans />,
+      },
+      {
+        path: "payment/success",
+        element: <PaymentSuccess />,
+      },
+      {
+        path: "match-history",
+        element: <MatchHistory />,
+      },
+      {
+        path: "userhome",
+        element: <UserHome />,
       },
 
     ],

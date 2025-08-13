@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './HomePage.css';
@@ -66,10 +66,10 @@ const HomePage = () => {
         {/* CTA Section */}
         <div className="cta-section">
           <button
-            onClick={() => user ? navigate('/resumes/new') : navigate('/login')}
+            onClick={() => user ? navigate('/userhome') : navigate('/login')}
             className="cta-button"
           >
-            🚀 Get Started Now <span className="cta-arrow">→</span>
+            🚀 {user ? 'Go to Dashboard' : 'Get Started Now'} <span className="cta-arrow">→</span>
           </button>
         </div>
 

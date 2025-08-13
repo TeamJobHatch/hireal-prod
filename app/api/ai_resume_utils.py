@@ -8,7 +8,9 @@ from openai import OpenAI
 import os
 
 # Initialize OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = None
+if os.getenv("OPENAI_API_KEY"):
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # Initialize S3 client
 s3 = boto3.client(
@@ -83,6 +85,19 @@ Respond ONLY with valid JSON.
 Resume text:
 {resume_text}
 """
+    if not client:
+        return {
+            "score_overall": 0.7,
+            "score_format": 0.8,
+            "score_skills": 0.6,
+            "score_experience": 0.7,
+            "red_flags": "OpenAI API not configured",
+            "positive_indicators": "Mock analysis",
+            "strengths": "Mock analysis",
+            "weaknesses": "Mock analysis",
+            "suggestions": "Configure OpenAI API key for real analysis"
+        }
+    
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[
@@ -126,6 +141,14 @@ Job Description:
 Resume Text:
 {resume_text[:3000]}
 """
+    if not client:
+        return {
+            "match_score": 0.7,
+            "score_skills": 0.6,
+            "score_experience": 0.7,
+            "summary": "Mock analysis - OpenAI API not configured"
+        }
+    
     response = client.chat.completions.create(
         model="gpt-4",
         messages=[

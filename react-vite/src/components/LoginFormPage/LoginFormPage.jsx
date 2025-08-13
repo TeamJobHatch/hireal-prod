@@ -28,7 +28,7 @@ function LoginFormPage() {
     if (serverResponse) {
       setErrors(serverResponse);
     } else {
-      navigate("/resumes/new");
+      navigate("/userhome");
     }
   };
 

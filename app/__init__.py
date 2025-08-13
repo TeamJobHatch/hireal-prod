@@ -10,8 +10,10 @@ from .api.auth_routes import auth_routes
 from .api.auth_google_routes import google_auth_routes
 from .api.resume_routes import resume_routes
 from .api.job_position_routes import job_position_routes
-from .api.ai_job_resume_score_routes import job_resume_score_routes
+from .api.ai_job_resume_score_routes import job_resume_score_routes as ai_job_resume_score_routes
 from .api.ai_resume_analysis_routes import ai_resume_analysis_routes
+from .api.job_resume_score_routes import resume_job_score_routes
+from .api.resume_analysis_routes import resume_analysis_routes
 from .api.sub_plan_routes import plans_bp
 from .api.user_sub_routes import subscriptions_bp
 from .api.user_payments_record_routes import stripe_routes
@@ -40,7 +42,9 @@ app.register_blueprint(google_auth_routes, url_prefix='/api/auth')
 app.register_blueprint(resume_routes, url_prefix='/api/resumes')
 app.register_blueprint(job_position_routes, url_prefix='/api/jobs')
 app.register_blueprint(ai_resume_analysis_routes, url_prefix='/api/ai')
-app.register_blueprint(job_resume_score_routes, url_prefix='/api/ai')
+app.register_blueprint(ai_job_resume_score_routes, url_prefix='/api/ai')
+app.register_blueprint(resume_job_score_routes, url_prefix='/api/job-resume-scores')
+app.register_blueprint(resume_analysis_routes, url_prefix='/api/resume-analyses')
 app.register_blueprint(plans_bp, url_prefix='/api/plans')
 app.register_blueprint(subscriptions_bp, url_prefix='/api/subscriptions')
 app.register_blueprint(stripe_routes, url_prefix='/api/payments')
@@ -48,7 +52,7 @@ db.init_app(app)
 Migrate(app, db)
 
 # Application Security
-CORS(app,origins="http://localhost:5173")
+CORS(app)
 
 
 # Since we are deploying with Docker and Flask,

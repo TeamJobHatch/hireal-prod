@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from app.models import Resume, ResumeAnalysis
 
-resume_analysis_routes = Blueprint('ai_resume_analysis', __name__)
+resume_analysis_routes = Blueprint('resume_analysis', __name__)
 
 @resume_analysis_routes.route('/analyses', methods=['GET'])
 @login_required
