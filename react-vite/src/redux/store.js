@@ -9,7 +9,8 @@ import sessionReducer from "./session";
 import jobPositionsReducer from './jobPositions';
 import resumesReducer from './resumes';
 import aiResumeAnalysisReducer from "./aiResumeAnalysis";
-import jobResumeScoreReducer from './aiJobResumeScore';
+import aijobResumeScoreReducer from './aiJobResumeScore';
+import resumeJobScoreReducer from './jobResumeScore';
 import plansReducer from './subPlans';
 import paymentsReducer from './payment';
 import userSubscriptionsReducer from "./userSub";
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   jobs: jobPositionsReducer,
   resumes: resumesReducer,
   aiResumeAnalysis: aiResumeAnalysisReducer,
-  jobResumeScore: jobResumeScoreReducer,
+  aijobResumeScore: aijobResumeScoreReducer,
+  resumeJobScore: resumeJobScoreReducer,
   plans: plansReducer,
   payments: paymentsReducer, 
   userSubscription: userSubscriptionsReducer,

@@ -1,7 +1,8 @@
-import React from 'react';
+
 
 import ShowJobPositions from '../ManageJobPosition/ShowJobPositions'
 import ManageResumes from '../ManageResume/ManageResumes'
+import MatchHistory from '../ResumeJobMatch/matchHistory'
 import MyPlans from '../ManageSubPlan/myPlan'
 
 
@@ -11,6 +12,7 @@ const UserHome = () => {
       <ShowJobPositions />
       <ManageResumes />
       <MyPlans />
+      <MatchHistory />
 
     </div>
   );

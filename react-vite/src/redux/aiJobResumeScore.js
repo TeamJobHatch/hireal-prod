@@ -65,7 +65,7 @@ const initialState = {
 };
 
 // Reducer
-const jobResumeScoreReducer = (state = initialState, action) => {
+const aijobResumeScoreReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_MATCH_RESULT:
       return {
@@ -92,5 +92,5 @@ const jobResumeScoreReducer = (state = initialState, action) => {
   }
 };
 
-export default jobResumeScoreReducer;
+export default aijobResumeScoreReducer;
 

@@ -1,8 +1,7 @@
-import React from 'react';
 
 export default function PaymentSuccess() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const sessionId = urlParams.get('session_id');
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const sessionId = urlParams.get('session_id');
 
   return (
     <div style={{ padding: 20 }}>
