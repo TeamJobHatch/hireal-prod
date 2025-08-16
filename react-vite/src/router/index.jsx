@@ -17,6 +17,7 @@ import PlanListPage from '../components/ManageSubPlan/PlanListPage';
 import PlanDetailPage from '../components/ManageSubPlan/PlanDetailPage';
 import UserHome from '../components/UserHome/UserHome';
 import PaymentSuccess from '../components/ManageSubPlan/PaymentSuccess'
+import HomePage from '../components/HomePage/HomePage';
 
 
 import Layout from './Layout';
@@ -27,7 +28,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <h1 className="text-4xl font-bold text-center mt-20">Welcome!</h1>,
+        element: <HomePage />,
       },
       {
         path: "login",
