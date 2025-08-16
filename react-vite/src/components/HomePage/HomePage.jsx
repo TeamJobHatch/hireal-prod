@@ -8,6 +8,7 @@ const HomePage = () => {
   console.log('HomePage rendering...', { user });
   
   return (
+
     <div style={{ 
       minHeight: '100vh', 
       backgroundColor: '#fff7e8', 
@@ -53,6 +54,8 @@ const HomePage = () => {
                 margin: '0',
                 color: '#D97706' 
               }}>JobHatch</h1>
+
+              
             </div>
             <p style={{ 
               fontSize: '18px', 
