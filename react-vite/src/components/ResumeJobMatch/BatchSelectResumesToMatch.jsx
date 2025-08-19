@@ -82,7 +82,7 @@ const BatchSelectResumesToMatch = () => {
                   </div>
                   <div className="batch-select-item-icon">R</div>
                   <h3 className="batch-select-item-title">
-                    {resume.title || `Resume #${resume.id}`}
+                    {resume.file_name}
                   </h3>
                 </div>
                 <div className="batch-select-item-details">

@@ -112,7 +112,8 @@ def batch_match_resumes_to_job(job_id):
                 "score_skills": existing_score.score_skills,
                 "score_experience": existing_score.score_experience,
                 "summary": existing_score.summary,
-                "cached": True
+                "cached": True,
+                "resume_info": resume.to_dict() 
             })
             continue
 
@@ -164,7 +165,8 @@ def batch_match_resumes_to_job(job_id):
             "score_skills": score_skills,
             "score_experience": score_experience,
             "summary": summary,
-            "cached": False
+            "cached": False,
+            "resume_info": resume.to_dict()
         })
 
     db.session.commit()

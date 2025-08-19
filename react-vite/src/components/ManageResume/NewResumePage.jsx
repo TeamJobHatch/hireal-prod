@@ -17,7 +17,6 @@ const NewResumePage = ({ fromOnboarding = false, onComplete }) => {
     files.forEach((file) => formData.append("file", file));
 
     const uploadedResumes = await dispatch(thunkUploadResumes(formData));
-    console.log("Upload result:", uploadedResumes);
 
     if (!uploadedResumes || uploadedResumes.error) {
       alert("Upload failed: " + JSON.stringify(uploadedResumes));
@@ -25,8 +24,12 @@ const NewResumePage = ({ fromOnboarding = false, onComplete }) => {
     }
 
     if (fromOnboarding && onComplete) {
-      const uploadedIds = uploadedResumes.map((r) => r.id);
-      onComplete(uploadedIds); 
+      const uploadedResumesInfo = uploadedResumes.map((r) => ({
+        id: r.id,
+        file_name: r.file_name,
+        file_url: r.file_url
+      }));
+      onComplete(uploadedResumesInfo);
     } else {
       navigate("/resumes");
     }

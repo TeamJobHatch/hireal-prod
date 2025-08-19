@@ -33,9 +33,12 @@ const EditJobPosition = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const result = await dispatch(thunkUpdateJob(id, { title, description }));
-    if (!result) {
-      navigate("/joblist");
-    }
+    if (result) {
+    alert("Job updated successfully!");  
+    navigate(`/joblist/${id}`);              
+  } else {
+    alert("Failed to update job. Please try again.");
+  }
   };
 
   return (

@@ -18,7 +18,7 @@ const NewJobPosition = ({ fromOnboarding = false, onComplete }) => {
     if (res && res.error) {
       setErrors(res);
     } else if (fromOnboarding && onComplete) {
-      onComplete(res.id);
+      onComplete({ id: res.id, title: res.title, description: res.description })
     } else {
       navigate('/joblist');
     }

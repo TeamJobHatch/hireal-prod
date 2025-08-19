@@ -88,7 +88,9 @@ const BatchResumeJobMatch = () => {
                     <div className={`batch-match-resume-icon ${result.error ? 'batch-match-error-icon' : ''}`}>
                       {result.error ? '!' : 'R'}
                     </div>
-                    <h3 className="batch-match-resume-title">Resume {result.resume_id}</h3>
+                    <h3 className="batch-match-resume-title">
+                      {result.resume_info.file_name}
+                    </h3>
                   </div>
                   {!result.error && (
                     <div className="batch-match-overall-score">
