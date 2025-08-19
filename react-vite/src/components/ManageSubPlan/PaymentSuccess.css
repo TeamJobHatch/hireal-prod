@@ -1,0 +1,155 @@
+/* PaymentSuccess.css */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.payment-success-page {
+  min-height: 100vh;
+  background-color: #fff7e8;
+  font-family: 'Varela Round', ui-rounded, 'Nunito Sans', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.payment-success-container {
+  max-width: 32rem;
+  width: 100%;
+}
+
+.payment-success-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 3rem;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.payment-success-icon {
+  width: 4rem;
+  height: 4rem;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.payment-success-checkmark {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  stroke-width: 3;
+}
+
+.payment-success-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.payment-success-message {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.payment-success-details {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.payment-success-detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.payment-success-detail-row:not(:last-child) {
+  border-bottom: 1px solid #dcfce7;
+}
+
+.payment-success-detail-label {
+  font-weight: 500;
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.payment-success-detail-value {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.payment-success-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.payment-success-continue-btn {
+  background-color: #EA580C;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.payment-success-continue-btn:hover {
+  background-color: #DC2626;
+}
+
+.payment-success-dashboard-btn {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.payment-success-dashboard-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.payment-success-continue-btn:active,
+.payment-success-dashboard-btn:active {
+  transform: translateY(1px);
+}
+
+.payment-success-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.payment-success-footer-text {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.payment-success-email-link {
+  color: #EA580C;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.payment-success-email-link:hover {
+  text-decoration: underline;
+}

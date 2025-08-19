@@ -1,0 +1,176 @@
+/* ResumeJobMatch.css */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.resume-match-page {
+  min-height: 100vh;
+  background-color: #fff7e8;
+  font-family: 'Varela Round', ui-rounded, 'Nunito Sans', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  padding: 1.5rem 0;
+}
+
+.resume-match-container {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.resume-match-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
+  border: 1px solid rgba(234, 88, 12, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.resume-match-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-color: rgba(234, 88, 12, 0.2);
+}
+
+.resume-match-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.resume-match-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.resume-match-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.resume-match-content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.resume-match-score-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.resume-match-score-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.resume-match-score-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.resume-match-score-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #EA580C;
+}
+
+.resume-match-summary {
+  background: #fef3e8;
+  border: 1px solid #fed7aa;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+}
+
+.resume-match-summary-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.resume-match-summary-text {
+  color: #4b5563;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.resume-match-loading {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+.resume-match-loading-spinner {
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid #e5e7eb;
+  border-top: 2px solid #EA580C;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.resume-match-error {
+  text-align: center;
+  padding: 2rem;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.75rem;
+}
+
+.resume-match-no-result {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+}
+
+.resume-match-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.resume-match-action-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.resume-match-back-btn {
+  background-color: #6b7280;
+  color: white;
+}
+
+.resume-match-back-btn:hover {
+  background-color: #4b5563;
+}
+
+.resume-match-action-btn:active {
+  transform: translateY(1px);
+}

@@ -1,0 +1,180 @@
+/* PlanDetailPage.css */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.plan-detail-page {
+  min-height: 100vh;
+  background-color: #fff7e8;
+  font-family: 'Varela Round', ui-rounded, 'Nunito Sans', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  padding: 2rem 0;
+}
+
+.plan-detail-container {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.plan-detail-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 2.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.plan-detail-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.plan-detail-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.plan-detail-tagline {
+  font-size: 1.125rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
+
+.plan-detail-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #EA580C;
+  margin-bottom: 0.5rem;
+}
+
+.plan-detail-billing {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-transform: capitalize;
+}
+
+.plan-detail-description {
+  margin-bottom: 2rem;
+}
+
+.plan-detail-description-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.plan-detail-description-text {
+  color: #4b5563;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.plan-detail-features {
+  margin-bottom: 2rem;
+}
+
+.plan-detail-features-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.75rem;
+}
+
+.plan-detail-features-content {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.75rem;
+  color: #374151;
+  overflow-x: auto;
+}
+
+.plan-detail-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.plan-detail-subscribe-btn {
+  background-color: #EA580C;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.plan-detail-subscribe-btn:hover {
+  background-color: #DC2626;
+}
+
+.plan-detail-subscribe-btn:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.plan-detail-back-btn {
+  background-color: #6b7280;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.plan-detail-back-btn:hover {
+  background-color: #4b5563;
+}
+
+.plan-detail-subscribe-btn:active,
+.plan-detail-back-btn:active {
+  transform: translateY(1px);
+}
+
+.plan-detail-loading {
+  text-align: center;
+  color: #6b7280;
+  padding: 3rem;
+  font-size: 1rem;
+}
+
+.plan-detail-error {
+  text-align: center;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+.plan-detail-not-found {
+  text-align: center;
+  color: #6b7280;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+}
+
+.plan-detail-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
