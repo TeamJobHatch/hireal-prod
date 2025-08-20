@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NewJobPosition from "../ManageJobPosition/NewJobPosition";
@@ -17,6 +17,9 @@ const OnboardingFlow = () => {
   const batchResults = useSelector(
     (state) => state.aijobResumeScore.batchMatchResults
   );
+  const resumesById = useSelector(state => state.resumes || {});
+  const jobsById = useSelector(state => state.jobs || {});
+  const jobTitle = useMemo(() => jobsById[jobId]?.title || `Job ${jobId}`,[jobsById, jobId]);
 
   const handleJobCreated = (createdJobId) => {
     setJobId(createdJobId);
@@ -67,8 +70,7 @@ const OnboardingFlow = () => {
           <div className="onboarding-content">
             <div className="onboarding-step-title">Ready for Analysis</div>
             <div className="onboarding-step-subtitle">
-              Ready to analyze {resumeIds.length} resume
-              {resumeIds.length > 1 ? "s" : ""} for Job {jobId}?
+              Ready to analyze {resumeIds.length} resume{resumeIds.length > 1 ? "s" : ""} for {jobTitle}?
             </div>
             <div className="onboarding-actions">
               <button
@@ -93,7 +95,7 @@ const OnboardingFlow = () => {
                 {batchResults.map((result, idx) => (
                   <div key={idx} className="onboarding-result-item">
                     <div className="onboarding-result-info">
-                      <span>Resume {result.resume_id}</span>
+                      <span>{resumesById[result.resume_id]?.file_name || `Resume ${result.resume_id}`}</span>
                     </div>
                     <div className="onboarding-result-score">
                       Match Score: {result.match_score}

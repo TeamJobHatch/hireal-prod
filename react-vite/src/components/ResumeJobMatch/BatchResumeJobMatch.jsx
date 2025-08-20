@@ -12,6 +12,7 @@ const BatchResumeJobMatch = () => {
 
   const resumeIds = location.state?.resumeIds || [];
   const batchMatchResults = useSelector(state => state.aijobResumeScore.batchMatchResults || []);
+  const resumesById = useSelector(state => state.resumes || {});
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -88,7 +89,7 @@ const BatchResumeJobMatch = () => {
                     <div className={`batch-match-resume-icon ${result.error ? 'batch-match-error-icon' : ''}`}>
                       {result.error ? '!' : 'R'}
                     </div>
-                    <h3 className="batch-match-resume-title">Resume {result.resume_id}</h3>
+                    <h3 className="batch-match-resume-title">{resumesById[result.resume_id]?.file_name || `Resume ${result.resume_id}`}</h3>
                   </div>
                   {!result.error && (
                     <div className="batch-match-overall-score">

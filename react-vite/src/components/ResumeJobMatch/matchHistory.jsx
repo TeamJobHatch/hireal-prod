@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { thunkFetchAllScores, clearError } from '../../redux/jobResumeScore';
+import { thunkFetchAllJobs } from '../../redux/jobPositions';
+import { thunkFetchResumes } from '../../redux/resumes';
 import './matchHistory.css';
 
 function MatchHistory() {
@@ -8,9 +10,13 @@ function MatchHistory() {
 
   const allScores = useSelector(state => state.resumeJobScore.allScores);
   const error = useSelector(state => state.resumeJobScore.error);
+  const jobsById = useSelector(state => state.jobs || {});
+  const resumesById = useSelector(state => state.resumes || {});
 
   useEffect(() => {
     dispatch(thunkFetchAllScores());
+    dispatch(thunkFetchAllJobs());
+    dispatch(thunkFetchResumes());
 
     return () => dispatch(clearError());
   }, [dispatch]);
@@ -91,6 +97,7 @@ function MatchHistory() {
         ) : (
           <div className="match-history-content">
             {jobsWithMatches.map(job => {
+              const jobTitle = jobsById[job.job_id]?.title || `Job ${job.job_id}`;
               // 当前 job 的 resumes 按 match_score 降序排序
               const sortedMatches = job.matches
                 ? [...job.matches].sort((a, b) => (b.match_score || 0) - (a.match_score || 0))
@@ -101,7 +108,7 @@ function MatchHistory() {
                   <div className="match-history-job-header">
                     <div className="match-history-job-info">
                       <div className="match-history-job-icon">J</div>
-                      <h3 className="match-history-job-title">Job {job.job_id}</h3>
+                      <h3 className="match-history-job-title">{jobTitle}</h3>
                     </div>
                     <div className="match-history-job-id">Job #{job.job_id}</div>
                   </div>
@@ -111,7 +118,7 @@ function MatchHistory() {
                     <table className="match-history-table">
                       <thead>
                         <tr>
-                          <th>Resume ID</th>
+                          <th>Resume</th>
                           <th>Match Score</th>
                           <th>Skills Score</th>
                           <th>Experience Score</th>
@@ -128,7 +135,7 @@ function MatchHistory() {
 
                           return (
                             <tr key={score.id}>
-                              <td className="match-history-resume-id">{score.resume_id}</td>
+                              <td className="match-history-resume-id">{resumesById[score.resume_id]?.file_name || `Resume ${score.resume_id}`}</td>
                               <td className="match-history-score">{score.match_score?.toFixed(2)}</td>
                               <td className="match-history-score">{score.score_skills?.toFixed(2)}</td>
                               <td className="match-history-score">{score.score_experience?.toFixed(2)}</td>
