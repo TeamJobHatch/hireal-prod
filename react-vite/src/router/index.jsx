@@ -18,7 +18,7 @@ import PlanDetailPage from '../components/ManageSubPlan/PlanDetailPage';
 import UserHome from '../components/UserHome/UserHome';
 import PaymentSuccess from '../components/ManageSubPlan/PaymentSuccess';
 import HomePage from '../components/HomePage/HomePage';
-import OnboardingFlow from '../components/HomePage/OnboardingFlow';
+import OnboardingFlow from '../components/OnboardingFlow';
 
 
 import Layout from './Layout';

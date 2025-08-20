@@ -28,6 +28,7 @@ RUN pip install psycopg2
 # Copy application source code into the container
 COPY . .
 
+
 # Run database migration and seeding (for production use, move to entrypoint)
 RUN flask db upgrade
 RUN flask seed undo

@@ -26,7 +26,7 @@ const NewJobPosition = ({ fromOnboarding = false, onComplete }) => {
 
   return (
     <div className="new-job-page">
-      <div className="new-job-container">
+      <div className={`new-job-container ${!fromOnboarding ? 'offset-top' : ''}`}>
         <div className="new-job-content">
           <div className="new-job-card">
             <div className="new-job-header">

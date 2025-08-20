@@ -129,3 +129,110 @@ main, always keeping it up to date.
 
 [Render.com]: https://render.com/
 [Dashboard]: https://dashboard.render.com/
+
+
+
+Venv initialization: 
+
+source /Users/test/.local/share/virtualenvs/hireal-prod-C1jeDCtG/bin/activate
+
+---
+
+## Quick start (TL;DR)
+
+1. Clone the repo and create a new branch for your work (optional):
+
+   ```bash
+   git clone <YOUR_REPO_URL>
+   cd hireal-prod
+   git checkout -b Simon-Exp
+   ```
+
+2. Backend setup (Python + Flask):
+
+   ```bash
+   pipenv install -r requirements.txt
+   pipenv shell
+   # create your .env based on the template below
+   flask db upgrade
+   flask seed all
+   flask run
+   ```
+
+3. Frontend setup (React + Vite):
+
+   ```bash
+   cd react-vite
+   npm i
+   npm run dev
+   ```
+
+4. Production bundle for Flask to serve:
+
+   ```bash
+   cd react-vite
+   npm run build
+   ```
+
+---
+
+## Prerequisites
+
+- Python 3.10+
+- Node.js 18+ and npm 9+
+- Pipenv
+- SQLite (dev) or Postgres (prod)
+
+---
+
+## Local environment variables (.env)
+
+Create a `.env` file in the project root. This file is already gitignored and will not be committed. Use this template as a starting point:
+
+```dotenv
+# Flask
+FLASK_APP=app
+FLASK_ENV=development
+SECRET_KEY=change_me_in_production
+
+# Database (SQLite example)
+DATABASE_URL=sqlite:///dev.db
+
+# Optional: schema name used by this starter
+SCHEMA=flask_schema
+```
+
+---
+
+## Development workflow
+
+- Backend
+  - Enter the virtualenv: `pipenv shell`
+  - Run migrations: `flask db upgrade`
+  - Seed data (optional): `flask seed all`
+  - Start server: `flask run`
+
+- Frontend
+  - Install deps: `cd react-vite && npm i`
+  - Dev server: `npm run dev`
+  - Build assets into `react-vite/dist`: `npm run build`
+
+---
+
+## Branching and pushing to GitHub
+
+To push your work to the `Simon-Exp` branch on origin:
+
+```bash
+git checkout -b Simon-Exp  # if not already on the branch
+git add -A                  # .env is excluded by .gitignore
+git commit -m "chore: setup docs and project push to Simon-Exp"
+git push -u origin Simon-Exp
+```
+
+---
+
+## Notes
+
+- The `.env` file and local environment-specific folders are excluded via `.gitignore` (e.g., `instance/`).
+- For production, ensure you follow the Render.com section above and mirror any required environment variables in the Render dashboard.
