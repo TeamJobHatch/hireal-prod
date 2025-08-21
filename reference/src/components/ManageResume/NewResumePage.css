@@ -1,0 +1,279 @@
+/* NewResumePage.css */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.upload-page {
+  min-height: 100vh;
+  background-color: #fff7e8;
+  font-family: 'Varela Round', ui-rounded, 'Nunito Sans', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.upload-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 1.5rem;
+}
+
+.upload-content {
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+/* Apply standard top offset when not embedded in onboarding */
+.upload-container.offset-top {
+  margin-top: 10rem;
+}
+
+/* Header */
+.upload-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.upload-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0;
+}
+
+/* Upload Card */
+.upload-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border: 1px solid rgba(234, 88, 12, 0.1);
+}
+
+/* Upload Form */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.upload-form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Custom Upload Field */
+.upload-field-wrapper {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.upload-field {
+  position: relative;
+  border: 2px dashed #d1d5db;
+  border-radius: 0.75rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: #fafafa;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.upload-field:hover {
+  border-color: #EA580C;
+  background-color: #fff7ed;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(234, 88, 12, 0.1);
+}
+
+.upload-field.drag-active {
+  border-color: #EA580C;
+  background-color: #fff7ed;
+  border-style: solid;
+}
+
+.upload-field-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.upload-field-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.upload-field-icon {
+  width: 3rem;
+  height: 3rem;
+  color: #9ca3af;
+  transition: color 0.3s;
+}
+
+.upload-field:hover .upload-field-icon {
+  color: #EA580C;
+}
+
+.upload-field-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.upload-field-primary {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.upload-field-secondary {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.upload-field-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #EA580C, #D97706);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(234, 88, 12, 0.3);
+  font-family: inherit;
+}
+
+.upload-field-button:hover {
+  background: linear-gradient(135deg, #DC2626, #B91C1C);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 8px -1px rgba(234, 88, 12, 0.4);
+}
+
+.upload-field-button:active {
+  transform: translateY(0);
+}
+
+.upload-form-input {
+  margin-bottom: 1rem;
+  display: none; /* Hide default input */
+}
+
+/* Files List */
+.files-list {
+  margin-bottom: 1.5rem;
+}
+
+.files-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+}
+
+.file-name {
+  color: #374151;
+  font-size: 0.875rem;
+}
+
+.remove-file-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #dc2626;
+  transition: color 0.2s;
+  padding: 0.25rem;
+  font-weight: 500;
+}
+
+.remove-file-btn:hover {
+  text-decoration: underline;
+}
+
+/* Action Buttons */
+.upload-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.upload-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #D97706;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+}
+
+.upload-button:hover {
+  background-color: #B45309;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .upload-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .upload-content {
+    max-width: 100%;
+  }
+  
+  .upload-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .upload-title {
+    font-size: 1.75rem;
+  }
+  
+  .upload-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .upload-container {
+    padding: 1rem 0.75rem;
+  }
+  
+  .upload-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .upload-title {
+    font-size: 1.5rem;
+  }
+  
+  .upload-subtitle {
+    font-size: 0.9rem;
+  }
+}

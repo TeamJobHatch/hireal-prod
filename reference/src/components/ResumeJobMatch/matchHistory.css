@@ -1,0 +1,255 @@
+/* matchHistory.css */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* Dashboard Section Integration */
+.match-history-content {
+  width: 100%;
+  background: transparent;
+}
+
+/* Error and Loading States within Dashboard */
+.match-history-error {
+  text-align: center;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+
+/* Keep existing standalone styles for full-page view */
+.match-history-page {
+  min-height: 100vh;
+  background-color: #fff7e8;
+  font-family: 'Varela Round', ui-rounded, 'Nunito Sans', 'SF Pro Rounded', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  padding: 2rem 0;
+}
+
+.match-history-container {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.match-history-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.match-history-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.match-history-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.match-history-card {
+  background: white;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  padding: 2rem;
+  border: 1px solid rgba(234, 88, 12, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.match-history-card:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border-color: rgba(234, 88, 12, 0.2);
+}
+
+.match-history-job-section {
+  margin-bottom: 1.5rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.match-history-job-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.match-history-job-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.match-history-job-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: #EA580C;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.match-history-job-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0;
+}
+
+.match-history-job-id {
+  background: #EA580C;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.match-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.match-history-table th {
+  background: #374151;
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.match-history-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  vertical-align: top;
+}
+
+.match-history-table tr:last-child td {
+  border-bottom: none;
+}
+
+.match-history-table tr:hover {
+  background: #f9fafb;
+}
+
+.match-history-resume-id {
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.match-history-score {
+  font-weight: 700;
+  color: #EA580C;
+}
+
+.match-history-analysis {
+  max-width: 250px;
+}
+
+.match-history-analysis-item {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.match-history-analysis-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.match-history-analysis-score {
+  font-weight: 600;
+  color: #10b981;
+}
+
+.match-history-analysis-strengths {
+  color: #059669;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.match-history-analysis-weaknesses {
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.match-history-analysis-suggestions {
+  color: #6b7280;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.match-history-analysis-date {
+  color: #9ca3af;
+  font-size: 0.625rem;
+}
+
+.match-history-no-analysis {
+  color: #6b7280;
+  font-style: italic;
+}
+
+.match-history-empty {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+.match-history-empty-icon {
+  width: 4rem;
+  height: 4rem;
+  color: #d1d5db;
+  margin: 0 auto 1rem;
+}
+
+.match-history-empty-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.match-history-empty-text {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.match-history-empty-action {
+  background-color: #EA580C;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.match-history-empty-action:hover {
+  background-color: #DC2626;
+}
+
+

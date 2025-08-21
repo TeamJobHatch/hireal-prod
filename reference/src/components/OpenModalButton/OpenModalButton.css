@@ -1,0 +1,50 @@
+/* OpenModalButton.css */
+.open-modal-button {
+  background: linear-gradient(135deg, #EA580C, #D97706);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px 0 rgba(234, 88, 12, 0.2);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.open-modal-button:hover {
+  background: linear-gradient(135deg, #DC2626, #B45309);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px 0 rgba(234, 88, 12, 0.3);
+}
+
+.open-modal-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px 0 rgba(234, 88, 12, 0.2);
+}
+
+.open-modal-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.2), 0 2px 4px 0 rgba(234, 88, 12, 0.2);
+}
+
+.open-modal-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.open-modal-button:disabled:hover {
+  background: linear-gradient(135deg, #EA580C, #D97706);
+  transform: none;
+  box-shadow: 0 2px 4px 0 rgba(234, 88, 12, 0.2);
+}

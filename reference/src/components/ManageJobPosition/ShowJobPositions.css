@@ -1,0 +1,154 @@
+/* ShowJobPositions.css */
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+/* Items List - matching resume section structure */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.empty-state-description {
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+/* Item Card - matching resume item structure */
+.item-card {
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: fit-content;
+  transition: background-color 0.2s;
+}
+
+.item-card:last-child {
+  border-bottom: none;
+}
+
+.item-card:hover {
+  background-color: #f9fafb;
+}
+
+/* Item Content */
+.item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.item-title {
+  font-weight: 600;
+  color: #2563eb;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.item-title:hover {
+  text-decoration: underline;
+  color: #1d4ed8;
+}
+
+.item-description {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-height: 4.2rem; /* Limits to approximately 3 lines */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: pre-wrap;
+}
+
+/* Item Actions */
+.item-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1rem;
+  flex-shrink: 0;
+}
+
+.edit-button, .delete-button {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+.edit-button {
+  background: white;
+  color: #6b7280;
+  border: 1px solid #d1d5db;
+}
+
+.edit-button:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.delete-button {
+  background: white;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
+.delete-button:hover {
+  background-color: #fef2f2;
+  border-color: #dc2626;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .item-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .item-actions {
+    margin-left: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .item-actions {
+    gap: 0.5rem;
+  }
+  
+  .edit-button,
+  .delete-button {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
