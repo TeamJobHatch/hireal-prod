@@ -52,12 +52,14 @@ const JobPositionDetail = () => {
     <div className="job-detail-page">
       <div className="job-detail-container">
         <div className="job-detail-card">
-          <div className="job-content">
-            <h1 className="job-title">{job.title}</h1>
-            <p className="job-meta">
-              Created at: {new Date(job.created_at).toLocaleString()}
-            </p>
-            <p className="job-description">{job.description}</p>
+          <div className="job-content-box">
+            <div className="job-content">
+              <h1 className="job-title">{job.title}</h1>
+              <p className="job-meta">
+                Created at: {new Date(job.created_at).toLocaleString()}
+              </p>
+              <p className="job-description">{job.description}</p>
+            </div>
           </div>
           
           <div className="job-basic-actions">

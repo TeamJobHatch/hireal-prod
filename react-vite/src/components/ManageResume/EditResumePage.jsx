@@ -27,13 +27,21 @@ const EditResumePage = () => {
     const formData = new FormData();
     formData.append("file_name", name);
 
-    const res = await dispatch(thunkUpdateResume(resumeId, formData));
-    if (!res) {
-      navigate("/resumes");
-    } else {
-      alert("Update failed: " + JSON.stringify(res));
+    try {
+      const result = await dispatch(thunkUpdateResume(resumeId, formData));
+
+      if (result) {
+        alert("Resume updated successfully!");  
+        navigate("/resumes");                  
+      } else {
+        alert("Failed to update resume. Please try again.");
+      }
+    } catch (err) {
+      console.error("Update error:", err);
+      alert("Something went wrong. Please try again.");
     }
   };
+
 
   if (!resume) return (
     <div className="edit-page">

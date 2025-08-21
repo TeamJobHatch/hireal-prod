@@ -91,44 +91,51 @@ const NewResumePage = ({ fromOnboarding = false, onComplete }) => {
                     onChange={handleFileSelect}
                     className="upload-field-input"
                   />
-                  <div className="upload-field-content">
-                    <svg className="upload-field-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                    </svg>
-                    <div className="upload-field-text">
-                      <div className="upload-field-secondary">Drag and drop files here, or click to browse</div>
-                      <div className="upload-field-secondary">Supports .pdf and .docx files</div>
-                    </div>
-                    <button type="button" className="upload-field-button">
-                      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                  
+                  {files.length === 0 ? (
+                    <div className="upload-field-content">
+                      <svg className="upload-field-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                       </svg>
-                      Choose Files
-                    </button>
-                  </div>
+                      <div className="upload-field-text">
+                        <div className="upload-field-secondary">Drag and drop files here, or click to browse</div>
+                        <div className="upload-field-secondary">Supports .pdf and .docx files</div>
+                      </div>
+                      <button type="button" className="upload-field-button">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Choose Files
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="upload-field-content">
+                      <div className="files-container">
+                        {files.map((file, idx) => (
+                          <div key={idx} className="file-item">
+                            <div className="file-info">
+                              <span className="file-name">{file.name}</span>
+                            </div>
+                            <button
+                              type="button"
+                              className="remove-file-btn"
+                              onClick={() => removeFile(idx)}
+                            >
+                              Remove
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                      <button type="button" className="upload-field-button">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add More Files
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
-
-              {files.length > 0 && (
-                <div className="files-list">
-                  <div className="files-container">
-                    {files.map((file, idx) => (
-                      <div key={idx} className="file-item">
-                        <div className="file-info">
-                          <span className="file-name">{file.name}</span>
-                        </div>
-                        <button
-                          type="button"
-                          className="remove-file-btn"
-                          onClick={() => removeFile(idx)}
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
 
               <div className="upload-actions">
                 <button

@@ -68,10 +68,10 @@ def call_ai_resume_analysis(resume_text):
 You are an expert HR professional and AI resume analyst.
 
 Analyze the following resume text and provide a JSON response with fields:
-- score_overall: float 0-10
-- score_format: float 0-10
-- score_skills: float 0-10
-- score_experience: float 0-10
+- score_overall: integer 0-100, overall quality
+- score_format: integer 0-100, formatting quality
+- score_skills: integer 0-100, skills relevance
+- score_experience: integer 0-100, experience relevance
 - red_flags: text with possible issues (e.g. AI-generated content)
 - positive_indicators: text with good signals
 - strengths: summary of candidate strengths
@@ -110,9 +110,9 @@ You are a recruitment AI assistant.
 
 Given the job title and description, and a candidate's resume text,
 return a JSON with:
-- match_score: float 0-1 representing overall fit
-- score_skills: float 0-1 representing skill match
-- score_experience: float 0-1 representing experience match
+- match_score: integer 0-100 representing overall fit
+- score_skills: integer 0-100 representing skill match
+- score_experience: integer 0-100 representing experience match
 - summary: brief summary of strengths and weaknesses for this job
 
 Respond ONLY with valid JSON.

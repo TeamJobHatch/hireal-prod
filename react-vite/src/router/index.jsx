@@ -18,7 +18,7 @@ import PlanDetailPage from '../components/ManageSubPlan/PlanDetailPage';
 import UserHome from '../components/UserHome/UserHome';
 import PaymentSuccess from '../components/ManageSubPlan/PaymentSuccess';
 import HomePage from '../components/HomePage/HomePage';
-import OnboardingFlow from '../components/OnboardingFlow';
+import OnboardingFlow from '../components/OnboardingFlow/OnboardingFlow';
 
 
 import Layout from './Layout';
@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "joblist",
-        element: <ShowJobPositions />,
+        element: <ShowJobPositions isStandalone={true} />,
       },
       {
         path: "joblist/new",
@@ -61,7 +61,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "resumes",
-        element: <ManageResumes />,
+        element: <ManageResumes isStandalone={true} />,
       },
       {
         path: "resumes/new",

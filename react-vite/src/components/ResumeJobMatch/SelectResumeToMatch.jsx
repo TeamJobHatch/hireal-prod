@@ -66,10 +66,10 @@ const SelectResumeToMatch = () => {
                   </h3>
                 </div>
                 <div className="select-resume-item-details">
-                  <div className="select-resume-item-detail">
+                  {/* <div className="select-resume-item-detail">
                     <span className="select-resume-item-label">ID:</span>
                     <span className="select-resume-item-value">{resume.id}</span>
-                  </div>
+                  </div> */}
                   <div className="select-resume-item-detail">
                     <span className="select-resume-item-label">URL:</span>
                     <a

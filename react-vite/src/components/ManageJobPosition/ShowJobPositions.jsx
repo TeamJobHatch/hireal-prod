@@ -7,7 +7,7 @@ import {
 } from '../../redux/jobPositions';
 import "./ShowJobPositions.css";
 
-const ShowJobPositions = () => {
+const ShowJobPositions = ({ isStandalone = false }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const jobs = useSelector((state) => Object.values(state.jobs));
@@ -23,17 +23,17 @@ const ShowJobPositions = () => {
     }
   };
 
-  return (
-    <div className="dashboard-section">
-      <div className="section-header">
-        <h2 className="section-title">Your Job Positions</h2>
-        <div className="section-actions">
-          <Link to="/joblist/new" className="action-button primary">
+  const content = (
+    <>
+      <div className={isStandalone ? "manage-header" : "section-header"}>
+        <h2 className={isStandalone ? "manage-title" : "section-title"}>Your Job Positions</h2>
+        <div className={isStandalone ? "" : "section-actions"}>
+          <Link to="/joblist/new" className={isStandalone ? "new-item-button" : "action-button primary"}>
             + New Job
           </Link>
         </div>
       </div>
-      <div className="section-content">
+      <div className={isStandalone ? "" : "section-content"}>
         <div className="items-list">
           {jobs.length === 0 && (
             <div className="empty-state">
@@ -69,6 +69,22 @@ const ShowJobPositions = () => {
           ))}
         </div>
       </div>
+    </>
+  );
+
+  if (isStandalone) {
+    return (
+      <div className="manage-page">
+        <div className="manage-container">
+          {content}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="dashboard-section">
+      {content}
     </div>
   );
 };
