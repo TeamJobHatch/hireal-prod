@@ -116,13 +116,6 @@ const NewResumePage = ({ fromOnboarding = false, onComplete }) => {
                             <div className="file-info">
                               <span className="file-name">{file.name}</span>
                             </div>
-                            <button
-                              type="button"
-                              className="remove-file-btn"
-                              onClick={() => removeFile(idx)}
-                            >
-                              Remove
-                            </button>
                           </div>
                         ))}
                       </div>
