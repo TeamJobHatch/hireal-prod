@@ -35,4 +35,4 @@ RUN flask seed undo
 RUN flask seed all
 
 # Start the application using Gunicorn
-CMD gunicorn app:app --bind 0.0.0.0:8000
+CMD flask db upgrade && gunicorn app:app --bind 0.0.0.0:8000
