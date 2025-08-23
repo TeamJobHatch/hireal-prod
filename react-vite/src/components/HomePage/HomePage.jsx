@@ -13,7 +13,7 @@ const HomePage = () => {
         <div className="hero-section">
           <div className="hero-content">
             
-            <h1 className="enterprise-tag">JobHatch Enterprise AI</h1>
+            <h1 className="enterprise-tag">Hireal Enterprise AI</h1>
             <h2 className="hero-title">
               Find Your <span className="title-highlight">Perfect Candidate</span> in Minutes
             </h2>
